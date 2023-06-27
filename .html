@@ -15,8 +15,10 @@
   <body>
     <div id="app" class="container">
       <input v-model="message" placeholder="Enter a message" class="form-control mt-4">
+      <button @click="addMessage" class="btn btn-primary mt-4">Submit</button>
       <p class="mt-4" v-if="message">Your message is: {{ message }}</p>
       <p class="mt-4" v-else>No message entered.</p>
+      <p class="mt-4" v-for="msg in submittedMessages">message: {{ msg }}</p>
     </div>
 
     <!-- Vue.js application -->
@@ -24,7 +26,16 @@
       var app = new Vue({
         el: '#app',
         data: {
-          message: ''
+          message: '',
+          submittedMessages: []
+        },
+        methods: {
+          addMessage() {
+            if (this.message) {
+              this.submittedMessages.unshift(this.message);
+              this.message = '';
+            }
+          }
         }
       })
     </script>
