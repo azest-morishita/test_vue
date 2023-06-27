@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <title>Vue.js</title>
     <!-- Required meta tags -->
@@ -15,7 +15,8 @@
   <body>
     <div id="app" class="container">
       <input v-model="message" placeholder="Enter a message" class="form-control mt-4">
-      <p class="mt-4">Your message is: {{ message }}</p>
+      <p class="mt-4" v-if="message">Your message is: {{ message }}</p>
+      <p class="mt-4" v-else>No message entered.</p>
     </div>
 
     <!-- Vue.js application -->
