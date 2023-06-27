@@ -23,7 +23,7 @@
   </head>
   <body>
     <div id="app" class="container">
-      <input v-model="message" :class="{'valid': message, 'invalid': !message}" placeholder="Enter a message" class="form-control mt-4">
+      <input v-model="message" :class="{'valid': message, 'invalid': !message}" :style="{color: message.length >= 5 ? 'blue' : 'red'}" placeholder="Enter a message" class="form-control mt-4">
       <button @click="addMessage" class="btn btn-primary mt-4">Submit</button>
       <p class="mt-4" v-if="message">Your message is: {{ message }}</p>
       <p class="mt-4" v-else>No message entered.</p>
