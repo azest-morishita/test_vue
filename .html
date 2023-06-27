@@ -1,15 +1,31 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
   <head>
-    <title>Title</title>
+    <title>Vue.js</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Include Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   </head>
   <body>
-     
+    <div id="app" class="container">
+      <input v-model="message" placeholder="Enter a message" class="form-control mt-4">
+      <p class="mt-4">Your message is: {{ message }}</p>
+    </div>
+
+    <!-- Vue.js application -->
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: ''
+        }
+      })
+    </script>
   </body>
 </html>
