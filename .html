@@ -27,7 +27,7 @@
       <button @click="addMessage" class="btn btn-primary mt-4">Submit</button>
       <p class="mt-4" v-if="message">Your message is: {{ message }}</p>
       <p class="mt-4" v-else>No message entered.</p>
-      <p class="mt-4" v-for="msg in submittedMessages">message: {{ msg }}</p>
+      <p class="mt-4" v-for="msg in submittedMessages">{{ msg }}</p>
     </div>
 
     <!-- Vue.js application -->
@@ -45,6 +45,9 @@
               this.message = '';
             }
           }
+        },
+        created() {
+          this.submittedMessages.push('Loading completed! Welcome to the application!');
         }
       })
     </script>
