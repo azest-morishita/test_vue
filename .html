@@ -28,6 +28,8 @@
       <p class="mt-4" v-if="message">Your message is: {{ message }}</p>
       <p class="mt-4" v-else>No message entered.</p>
       <p class="mt-4" v-for="msg in submittedMessages">{{ msg }}</p>
+      <p class="mt-4">Current URL is: {{ currentUrl }}</p>
+      <p class="mt-4">Query string(after "?") is: {{ queryString }}</p>
     </div>
 
     <!-- Vue.js application -->
@@ -36,7 +38,9 @@
         el: '#app',
         data: {
           message: '',
-          submittedMessages: []
+          submittedMessages: [],
+          currentUrl: '',
+          queryString: ''
         },
         methods: {
           addMessage() {
@@ -44,13 +48,16 @@
             if (self.message) {
               self.submittedMessages.unshift(self.message);
               self.message = '';
+              self.currentUrl = window.location.href;
+              self.queryString = window.location.search;
             }
           }
         },
         created() {
           this.submittedMessages.push('Loading completed! Welcome to the application!');
+          this.currentUrl = window.location.href;
+          this.queryString = window.location.search;
         }
       })
-    </script>
-  </body>
+    </script  </body>
 </html>
