@@ -40,9 +40,10 @@
         },
         methods: {
           addMessage() {
-            if (this.message) {
-              this.submittedMessages.unshift(this.message);
-              this.message = '';
+            var self = this;
+            if (self.message) {
+              self.submittedMessages.unshift(self.message);
+              self.message = '';
             }
           }
         },
