@@ -17,14 +17,13 @@
         border: 2px solid red;
       }
     </style>
-
-    <!-- Include Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    
   </head>
   <body>
     <div id="app" class="container">
       <input v-model="message" :class="{'valid': message, 'invalid': !message}" :style="{color: message.length >= 5 ? 'blue' : 'red'}" placeholder="Enter a message" class="form-control mt-4">
       <button @click="addMessage" class="btn btn-primary mt-4">Submit</button>
+      <p class="mt-4" v-show="messageSent">Message successfully sent!</p>
       <p class="mt-4" v-if="message">Your message is: {{ message }}</p>
       <p class="mt-4" v-else>No message entered.</p>
       <p class="mt-4" v-for="msg in submittedMessages">{{ msg }}</p>
@@ -33,6 +32,7 @@
     </div>
 
     <!-- Vue.js application -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
       var app = new Vue({
         el: '#app',
@@ -40,7 +40,8 @@
           message: '',
           submittedMessages: [],
           currentUrl: '',
-          queryString: ''
+          queryString: '',
+          messageSent: false
         },
         methods: {
           addMessage() {
@@ -50,6 +51,9 @@
               self.message = '';
               self.currentUrl = window.location.href;
               self.queryString = window.location.search;
+              self.messageSent = true;
+            } else {
+              self.messageSent =false;
             }
           }
         },
@@ -59,5 +63,6 @@
           this.queryString = window.location.search;
         }
       })
-    </script  </body>
+    </script>
+  </body>
 </html>
